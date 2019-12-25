@@ -5,6 +5,9 @@ from weapon import Weapon
 #TODO сделать инвентарь
 #TODO дать возможность просматривать инвентарь
 #TODO решить что сделать приватным а что оставить как есть
+#TODO добавить возможность использовать Doshirak
+#TODO добавить новый параметр DEFENCE. Разработать его логику
+#TODO сделать выброс оружия
 
 #! TODO пересмотреть урон атаки оружием. Потому что что-то имбой попахивает
 
@@ -14,8 +17,20 @@ class Player:
         self.hp = 100
         self.attackDamage = 1
         self.inventory = {}
-        self.isWeaponInUse = False
+        self.__isWeaponInUse = False
         self.weapon = Weapon("SomeName")
+        self.__amountOfDoshirak = 0
+
+    def setDoshirak(self, numberOfDoshirak):
+        """Прибавляет необходимое количество предмета Doshirak
+        
+        Arguments:
+            numberOfDoshirak {int} -- the amount to be added
+        """
+        self.__amountOfDoshirak += numberOfDoshirak
+    
+    def getDoshirak(self):
+        return self.__amountOfDoshirak
 
     def setWeapon(self, name):
         """метод установки оружия
@@ -24,6 +39,7 @@ class Player:
             name {[string]} -- [name of weapon]
         """
         self.weapon = Weapon(name)
+        self.__isWeaponInUse = True
 
     def upgradeHit(self, plusAttack):
         self.attackDamage += plusAttack
@@ -63,13 +79,13 @@ class Player:
                     return self.attackDamage+self.attackDamage
             else:
                 if hitName == "weapon":
-                    if self.isWeaponInUse:
+                    if self.__isWeaponInUse:
                         randomNum = random.randint(0,100)
                         ut.printMsg("Ваше оружие" + self.weapon.name)
-                        if (randomNum >= self.weapon.critChance):
-                            return self.attackDamage - self.attackDamage/3
+                        if (randomNum >= self.weapon.getCritChance()):
+                            return self.weapon.getAttackDamage() - self.weapon.getAttackDamage()/3
                         else:
-                            return self.attackDamage+self.attackDamage/2
+                            return self.weapon.getAttackDamage() + self.weapon.getAttackDamage()/2
                     else:
                         ut.printMsg("У вас нет оружия")
                         return 0
