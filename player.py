@@ -6,7 +6,7 @@ from weapon import Weapon
 #TODO дать возможность просматривать инвентарь
 #TODO решить что сделать приватным а что оставить как есть
 
-
+#! TODO пересмотреть урон атаки оружием. Потому что что-то имбой попахивает
 
 class Player:
     def __init__(self, name):
@@ -64,8 +64,9 @@ class Player:
             else:
                 if hitName == "weapon":
                     if self.isWeaponInUse:
+                        randomNum = random.randint(0,100)
                         ut.printMsg("Ваше оружие" + self.weapon.name)
-                        if (randomNum > self.weapon.critChance):
+                        if (randomNum >= self.weapon.critChance):
                             return self.attackDamage - self.attackDamage/3
                         else:
                             return self.attackDamage+self.attackDamage/2
@@ -73,7 +74,7 @@ class Player:
                         ut.printMsg("У вас нет оружия")
                         return 0
 
-    def useInventory(self):
+    def __useInventory(self):
         #! не используется
         
         print ("В вашем инвентаре " + len(self.inventory) + "предметов")

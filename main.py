@@ -17,8 +17,9 @@ def fight():
     Сначала бьет игрок потом враг
     #! на тесты
     #! Возможность драки - +
-    #! Победа - 1
-
+    #! Победа - +
+    #! Поражение - +
+    #! Неверный ввод - +
     """
     ut.printMsg("Бой начался")
     ut.printMsg("Ваше хп равно: " + str(player.hp) + "\nХП противника равно: " + str(enm.hp))
@@ -37,7 +38,7 @@ def fight():
     if player.hp > 0:
         ut.printMsg("Вы победили " + str(enm.name))
     else:
-        ut.printMsg("Вы проиграли: " + str(enm.hp))
+        ut.printMsg("Вы проиграли. Оставшееся ХП противника: " + str(enm.hp))
         sys.exit(0)
 # СТАРТ КВЕСТА
 ut.printMsg("НАЧАЛО")
@@ -59,8 +60,16 @@ ut.printMsg("Это обучающий бой. И ты точно проигра
 #характеристики врага можно посмотреть в player.py.setEnemy()
 enm = Enemy("SVYATOY")
 enm.setEnemy()
-print(enm.hp)
+
 fight()
 
-
-
+ut.printMsg("SVYATOY - А ты что-то можешь.")
+answer = ut.printQuestionMsg2Option("Тут STYRASTA ищет волантеров. Не хочешь поучавствовать?","Да", "Нет")
+if answer == 1:
+    ut.printMsg("SVYATOY - Он у себя в коморке")
+    ut.printMsg("Вы проходите в коморку.") 
+else:
+    ut.printMsg("SVYATOY - ЛИЧНО МНЕ ПОЕБАТЬ. Пацаны затаскивайте")
+ut.printMsg("Там пахнет так себе если честно.\n" + 
+            "Не тесно, но и не сказать что есть куда яблоку упасть.\n"+
+            "КАЗАХСТАН. Первое что приходит вам в голову")

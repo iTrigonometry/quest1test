@@ -23,3 +23,19 @@ def printFightMsg():
         except ValueError:
             print("Ты не справился даже с этим. Пошел нахуй")
             return -1 
+
+def printQuestionMsg2Option(message, optionOne, optionTwo):
+    print(message + "\n1." + optionOne + "\n2." + optionTwo)
+    x = 0
+    while x<1 or x>2:
+        try:
+            x = int(input())
+            if x<1 or x >2:
+                print("А если подумать?")
+                continue
+            else:
+                return x
+        except ValueError:
+            print("А если подумать?")
+            continue
+
