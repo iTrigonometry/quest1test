@@ -11,7 +11,7 @@ from weapon import Weapon
 class Player:
     def __init__(self, name):
         self.name = name        
-        self.hp = 1
+        self.hp = 100
         self.attackDamage = 1
         self.inventory = {}
         self.isWeaponInUse = False
