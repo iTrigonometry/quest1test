@@ -1,14 +1,19 @@
+from time import sleep
+
 def printMsg(message):
     """вывод сообщения. Если вдруг я решусь сделать все в окошках то мне не придется переписывать все
-    
+
     Arguments:
         message {string} -- text of message
     """
+    __delayBeforeNextMessage()
     print(message)
+
+
 
 def printFightMsg():
     """Метод для выбора действия
-    
+
     Returns:
         int -- action
     """
@@ -22,7 +27,7 @@ def printFightMsg():
             return x
         except ValueError:
             print("Ты не справился даже с этим. Пошел нахуй")
-            return -1 
+            return -1
 
 def printQuestionMsg2Option(message, optionOne, optionTwo):
     print(message + "\n1." + optionOne + "\n2." + optionTwo)
@@ -39,3 +44,8 @@ def printQuestionMsg2Option(message, optionOne, optionTwo):
             print("А если подумать?")
             continue
 
+def __delayBeforeNextMessage():
+    """Просто задержка между сообщениями,
+        чтобы хоть как то успевать следить за тем что происходит
+    """
+    sleep(1)

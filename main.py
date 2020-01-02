@@ -14,9 +14,8 @@ import sys
 
 def quest1_Start():
     """Герой заходит в коморку и происходит диалог с STYROSTA
-        
     """
-    ut.printMsg("STYROSTA - Привет, " + str(player.name) + "." + 
+    ut.printMsg("STYROSTA - Привет, " + str(player.name) + "." +
                 "Ты уже видился с ILYLBAN? Хотя не важно. У него точно все хорошо.")
     ut.printMsg("STYROSTA - У нас есть проблема")
 
@@ -37,9 +36,9 @@ def fight():
     while player.hp > 0 and enm.hp > 0:
         numberOfHit = ut.printFightMsg()
         if numberOfHit == -1: enm.hp -=0
-        else: 
+        else:
             if numberOfHit == 1: enm.hp -= player.hit("hand")
-            else: 
+            else:
                 if numberOfHit == 2: enm.hp -= player.hit("leg")
                 else:
                     enm.hp -= player.hit("weapon")
@@ -78,12 +77,12 @@ ut.printMsg("SVYATOY - А ты что-то можешь.")
 answer = ut.printQuestionMsg2Option("Тут STYRASTA ищет волантеров. Не хочешь поучавствовать?","Да", "Нет")
 if answer == 1:
     ut.printMsg("SVYATOY - Он у себя в коморке")
-    ut.printMsg("Вы проходите в коморку.") 
+    ut.printMsg("Вы проходите в коморку.")
 else:
     ut.printMsg("SVYATOY - ЛИЧНО МНЕ ПОЕБАТЬ. Пацаны затаскивайте")
     ut.printMsg("Вас насильно затаскивают в коморку где сидит STYRASTA")
-ut.printMsg("Там пахнет так себе если честно.\n" + 
+ut.printMsg("Там пахнет так себе если честно.\n" +
             "Не тесно, но и не сказать что есть куда яблоку упасть.\n"+
             "КАЗАХСТАН. Первое что приходит вам в голову")
 
-#? перенести в отдельные методы или нет?
+#? перенести в отдельные методы историю или нет?
