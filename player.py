@@ -13,7 +13,7 @@ from weapon import Weapon
 
 class Player:
     def __init__(self, name):
-        self.name = name        
+        self.name = name
         self.hp = 100
         self.attackDamage = 1
         self.inventory = {}
@@ -23,18 +23,18 @@ class Player:
 
     def setDoshirak(self, numberOfDoshirak):
         """Прибавляет необходимое количество предмета Doshirak
-        
+
         Arguments:
             numberOfDoshirak {int} -- the amount to be added
         """
         self.__amountOfDoshirak += numberOfDoshirak
-    
+
     def getDoshirak(self):
         return self.__amountOfDoshirak
 
     def setWeapon(self, name):
         """метод установки оружия
-        
+
         Arguments:
             name {[string]} -- [name of weapon]
         """
@@ -47,7 +47,7 @@ class Player:
 
     def getNameToWeapon(self, nameOfWeapon):
         """ВременноОдноразовый метод. Присваивает имя оружию
-        
+
         Arguments:
             nameOfWeapon {[string]} -- [name of weapon]
         """
@@ -55,10 +55,10 @@ class Player:
 
     def hit(self, hitName):
         """Метод атаки персонажа выбор зависит от игрока
-        
+
         Arguments:
             hitName {[string]} -- [hand, leg, weapon]
-        
+
         Returns:
             [int] -- [damage]
         """
@@ -90,7 +90,18 @@ class Player:
                         ut.printMsg("У вас нет оружия")
                         return 0
 
+
+
+
+
+
+
+
+
+#** НЕ ИСПОЛЬЗУЕМЫЕ МЕТОДЫ
+
+
     def __useInventory(self):
         #! не используется
-        
+
         print ("В вашем инвентаре " + len(self.inventory) + "предметов")

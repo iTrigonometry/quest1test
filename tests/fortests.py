@@ -39,3 +39,4 @@ enm = Enemy("SVYATOY")
 player = Player("123")
 
 fight()
+
