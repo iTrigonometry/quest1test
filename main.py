@@ -2,7 +2,7 @@ import utils as ut
 from player import Player
 from enemy import Enemy
 import sys
-
+import random
 #! важные переменые
 #! для врага ВСЕГДА ИСПОЛЬЗОВАТЬ enm
 #! Игрок прячется в player
@@ -10,12 +10,17 @@ import sys
 
 """
     Готовые TODO
-    #TODOisDO сделать показ текущего состояния хп мб дамага на экране и добавить пробелы между блоками сражения
+    #TODO сделать показ текущего состояния хп мб дамага на экране и добавить пробелы между блоками сражения
+
+    #TODO поработать над диалогами. Читаются не очень   
+            Тотальная переработка сюжета
+    #TODO сделать рандомный выбор первого атакующего в начале боя
+            #!Вероятно нужны тесты
 """
 
+#TODO урон наносится как float а должен как int Либо оставляю либо нахер
+#TODO перенести все начало в отдельный метод main и запускать его через условие if __name__ == __main__
 
-#TODO поработать над диалогами. Читаются не очень
-#TODO сделать рандомный выбор первого атакующего в начале боя
 
 def quest1_Start():
     """Герой заходит в коморку и происходит диалог с STYROSTA
@@ -41,23 +46,47 @@ def fight():
     """
     ut.printMsg("Бой начался")
     ut.printMsg("Ваше хп равно: " + str(player.hp) + "\nХП противника равно: " + str(enm.hp))
-    while player.hp > 0 and enm.hp > 0:
+
+
+    whoIsFirst = random.randint(1,2) #** 1- player 2- enemy
+
+    def __playerAttack():
         numberOfHit = ut.printFightMsg()
-        if numberOfHit == -1: enm.hp -=0
+        if numberOfHit == -1: enm.hp -= 0
         else:
             if numberOfHit == 1: enm.hp -= player.hit("hand")
             else:
                 if numberOfHit == 2: enm.hp -= player.hit("leg")
                 else:
                     enm.hp -= player.hit("weapon")
-        ut.printMsg("ХП противника равно: " + str(enm.hp))
+        ut.printMsg("ХП противника равно: " + str(enm.hp)) 
+
+    def __enemyAttack():
+        ut.printMsg("Атакует противник")
         player.hp -= enm.hit()
         ut.printMsg("Ваше ХП равно: " + str(player.hp) + "\n")
+
+
+    while player.hp > 0 and enm.hp > 0:
+        if whoIsFirst == 1: #**player First
+            __playerAttack()
+            __enemyAttack()
+        else: #**enemy First
+            __enemyAttack()
+            __playerAttack()
+
+
+    #** who is win
     if player.hp > 0:
         ut.printMsg("Вы победили " + str(enm.name))
     else:
         ut.printMsg("Вы проиграли. Оставшееся ХП противника: " + str(enm.hp))
         sys.exit(0)
+
+
+
+
+
 # СТАРТ КВЕСТА
 ut.printMsg("НАЧАЛО")
 ut.printMsg("И нахера ты это запустил дебил")
@@ -76,8 +105,8 @@ ut.printMsg("SVYATOY - Хорошо, " + player.name + ". Защищайся!!!!
 ut.printMsg("Это обучающий бой. И ты точно проиграешь")
 
 #характеристики врага можно посмотреть в player.py.setEnemy()
-enm = Enemy("SVYATOY")
-enm.setEnemy()
+enm = Enemy()
+enm.setEnemy("SVYATOY")
 
 fight()
 
@@ -94,3 +123,4 @@ ut.printMsg("Там пахнет так себе если честно.\n" +
             "КАЗАХСТАН. Первое что приходит вам в голову")
 
 #? перенести в отдельные методы историю или нет?
+
