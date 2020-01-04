@@ -7,5 +7,5 @@ import sys
 
 
 player = Player("123")
-enm = Enemy("SVYATOY")
-enm.setEnemy()
+enm = Enemy()
+enm.setEnemy("SVYATOY")

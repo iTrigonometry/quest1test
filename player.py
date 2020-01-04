@@ -2,9 +2,19 @@ import random
 import utils as ut
 from weapon import Weapon
 
+
+"""готовые TODO
+
+    #TODO решить что сделать приватным а что оставить как есть
+            Решено что похуй, главное остальное не зафакапить
+R
+"""
+
+
+
 #TODO сделать инвентарь
 #TODO дать возможность просматривать инвентарь
-#TODO решить что сделать приватным а что оставить как есть
+
 #TODO добавить возможность использовать Doshirak
 #TODO добавить новый параметр DEFENCE. Разработать его логику
 #TODO сделать выброс оружия
@@ -20,6 +30,7 @@ class Player:
         self.__isWeaponInUse = False
         self.weapon = Weapon("SomeName")
         self.__amountOfDoshirak = 0
+        self.__doshirakEffect = 50
 
     def setDoshirak(self, numberOfDoshirak):
         """Прибавляет необходимое количество предмета Doshirak
@@ -90,7 +101,8 @@ class Player:
                         ut.printMsg("У вас нет оружия")
                         return 0
 
-
+    def useDoshirak(self):
+        self.hp += self.__doshirakEffect
 
 
 
