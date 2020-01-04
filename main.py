@@ -58,7 +58,9 @@ def fight():
             else:
                 if numberOfHit == 2: enm.hp -= player.hit("leg")
                 else:
-                    enm.hp -= player.hit("weapon")
+                    if numberOfHit == 3: enm.hp -= player.hit("weapon")
+                    else:
+                        player.useDoshirak()
         ut.printMsg("ХП противника равно: " + str(enm.hp)) 
 
     def __enemyAttack():
