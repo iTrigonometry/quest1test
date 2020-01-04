@@ -52,20 +52,29 @@ def fight():
 
     def __playerAttack():
         numberOfHit = ut.printFightMsg()
+
+
         if numberOfHit == -1: enm.hp -= 0
         else:
-            if numberOfHit == 1: enm.hp -= player.hit("hand")
+            if numberOfHit == 1:
+                __playerHandHit =  player.hit("hand")
+                enm.hp -= __playerHandHit - (__playerHandHit * enm.getDefence() / 100)
             else:
-                if numberOfHit == 2: enm.hp -= player.hit("leg")
+                if numberOfHit == 2:
+                    __playerLegHit =  player.hit("leg")
+                    enm.hp -= __playerLegHit - (__playerLegHit * enm.getDefence() / 100)
                 else:
-                    if numberOfHit == 3: enm.hp -= player.hit("weapon")
+                    if numberOfHit == 3:
+                        __playerWeaponHit = player.hit("weapon")
+                        enm.hp -= __playerWeaponHit - (__playerWeaponHit * enm.getDefence() / 100)
                     else:
                         player.useDoshirak()
-        ut.printMsg("ХП противника равно: " + str(enm.hp)) 
+        ut.printMsg("ХП противника равно: " + str(enm.hp))
 
     def __enemyAttack():
         ut.printMsg("Атакует противник")
-        player.hp -= enm.hit()
+        __enemyHit = enm.hit()
+        player.hp -= __enemyHit - (__enemyHit * player.getDefence() / 100)
         ut.printMsg("Ваше ХП равно: " + str(player.hp) + "\n")
 
 
