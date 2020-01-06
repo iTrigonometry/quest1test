@@ -1,6 +1,6 @@
 import utils as ut
-from player import Player
-from enemy import Enemy
+from refactorTry.player import Player
+from refactorTry.enemy import Enemy
 import sys
 import random
 #! важные переменые
@@ -12,10 +12,10 @@ import random
     Готовые TODO
     #TODO сделать показ текущего состояния хп мб дамага на экране и добавить пробелы между блоками сражения
 
-    #TODO поработать над диалогами. Читаются не очень   
+    #TODO поработать над диалогами. Читаются не очень
             Тотальная переработка сюжета
     #TODO сделать рандомный выбор первого атакующего в начале боя
-            #!Вероятно нужны тесты
+            #!Вероятно нужны перетесты
 """
 
 #TODO урон наносится как float а должен как int Либо оставляю либо нахер
@@ -45,7 +45,7 @@ def fight():
     player: Player - игрок
     """
     ut.printMsg("Бой начался")
-    ut.printMsg("Ваше хп равно: " + str(player.hp) + "\nХП противника равно: " + str(enm.hp))
+    ut.printMsg("Ваше хп равно: " + str(player.getHp()) + "\nХП противника равно: " + str(enm.getHP()))
 
 
     whoIsFirst = random.randint(1,2) #** 1- player 2- enemy
@@ -54,28 +54,28 @@ def fight():
         numberOfHit = ut.printFightMsg()
 
 
-        if numberOfHit == -1: enm.hp -= 0
+        if numberOfHit == -1: enm.setHp(-0)
         else:
             if numberOfHit == 1:
                 __playerHandHit =  player.hit("hand")
-                enm.hp -= __playerHandHit - (__playerHandHit * enm.getDefence() / 100)
+                enm.setHP( - __playerHandHit - (__playerHandHit * enm.getDefence() / 100) )
             else:
                 if numberOfHit == 2:
                     __playerLegHit =  player.hit("leg")
-                    enm.hp -= __playerLegHit - (__playerLegHit * enm.getDefence() / 100)
+                    enm.setHP( -  __playerLegHit - (__playerLegHit * enm.getDefence() / 100) )
                 else:
                     if numberOfHit == 3:
                         __playerWeaponHit = player.hit("weapon")
-                        enm.hp -= __playerWeaponHit - (__playerWeaponHit * enm.getDefence() / 100)
+                        enm.setHP( - __playerWeaponHit - (__playerWeaponHit * enm.getDefence() / 100) )
                     else:
                         player.useDoshirak()
-        ut.printMsg("ХП противника равно: " + str(enm.hp))
+        ut.printMsg("ХП противника равно: " + str(enm.getHP()))
 
     def __enemyAttack():
         ut.printMsg("Атакует противник")
         __enemyHit = enm.hit()
-        player.hp -= __enemyHit - (__enemyHit * player.getDefence() / 100)
-        ut.printMsg("Ваше ХП равно: " + str(player.hp) + "\n")
+        player.setHP( - __enemyHit - (__enemyHit * player.getDefence() / 100) )
+        ut.printMsg("Ваше ХП равно: " + str(player.getHP()) + "\n")
 
 
     while player.hp > 0 and enm.hp > 0:

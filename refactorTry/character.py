@@ -1,5 +1,6 @@
 from weapon import Weapon
 from abc import ABC, abstractmethod
+
 #TODO в getweaponname добавить проверку на установленное оружие
 
 class Character(ABC):
@@ -34,18 +35,18 @@ class Character(ABC):
     def getName(self):
         return self.__name
     def setName(self, name: str):
-        self.name = name
+        self.__name = name
 
 #** HP set get
     def getHP(self):
         return self.__hp
-    def setHP(self, howMuchToChange):
+    def setHP(self, howMuchToChange: int):
         self.__hp += howMuchToChange
 
 #**attackDamage set get
     def getAttackDamage(self):
         return self.__attackDamage
-    def setAttackDamage(self, howMuchToChange):
+    def setAttackDamage(self, howMuchToChange: int):
         self.__attackDamage += howMuchToChange
 
 #**Inventory
@@ -59,9 +60,13 @@ class Character(ABC):
     def getWeaponName(self):
         return self.__weapon.name
     def setWeapon(self, nameOfWeapon, attackDamageOfWeapon, critChanceOfWeapon):
+        self.__isWeaponInUse = True
         self.__weapon.name = nameOfWeapon
         self.__weapon.setAttackDamage(attackDamageOfWeapon)
         self.__weapon.setCritChance(critChanceOfWeapon)
+    def removeWeapon(self):
+        self.__isWeaponInUse = False
+
 
 #**Doshiraks get set
 

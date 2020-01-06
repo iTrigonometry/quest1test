@@ -2,4 +2,5 @@ from character import Character
 
 class Player(Character):
 
-    pass
+    def hit(self, nameOfHit: str):
+        return 0
