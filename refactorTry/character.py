@@ -3,6 +3,12 @@ from abc import ABC, abstractmethod
 
 #TODO в getweaponname добавить проверку на установленное оружие
 
+#TODO подумать над использованем доширака
+#**     Первый вариант хилит на определенное количество хп
+#**     Второй вариант хилит от 1 до 50
+#**     Третий варииант от -25 до 50 или что-то вроде того
+
+
 class Character(ABC):
 
     def __init__(self):
@@ -25,7 +31,8 @@ class Character(ABC):
     def hit(self):
         pass
 
-
+    def useDoshirak(self):
+        pass
 
 
 
@@ -76,3 +83,10 @@ class Character(ABC):
     def setAmountOfDoshirak(self, howMuchToChange):
         self.__amountOfDoshirak += howMuchToChange
 
+
+#**Defence get set
+
+    def getDefence(self):
+        return self.__defence
+    def setDefence(self, howMuchToChange):
+        self.__defence += howMuchToChange

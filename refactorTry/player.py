@@ -1,4 +1,4 @@
-from character import Character
+from refactorTry.character import Character
 
 class Player(Character):
 

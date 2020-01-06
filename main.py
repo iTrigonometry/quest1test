@@ -25,7 +25,7 @@ import random
 def quest1_Start():
     """Герой заходит в коморку и происходит диалог с STYROSTA
     """
-    ut.printMsg("STYROSTA - Привет, " + str(player.name) + "." +
+    ut.printMsg("STYROSTA - Привет, " + str(player.getName()) + "." +
                 "Ты уже видился с ILYLBAN? Хотя не важно. У него точно все хорошо.")
     ut.printMsg("STYROSTA - У нас есть проблема")
 
@@ -45,7 +45,7 @@ def fight():
     player: Player - игрок
     """
     ut.printMsg("Бой начался")
-    ut.printMsg("Ваше хп равно: " + str(player.getHp()) + "\nХП противника равно: " + str(enm.getHP()))
+    ut.printMsg("Ваше хп равно: " + str(player.getHP()) + "\nХП противника равно: " + str(enm.getHP()))
 
 
     whoIsFirst = random.randint(1,2) #** 1- player 2- enemy
@@ -54,7 +54,7 @@ def fight():
         numberOfHit = ut.printFightMsg()
 
 
-        if numberOfHit == -1: enm.setHp(-0)
+        if numberOfHit == -1: enm.setHP(-0)
         else:
             if numberOfHit == 1:
                 __playerHandHit =  player.hit("hand")
@@ -78,7 +78,7 @@ def fight():
         ut.printMsg("Ваше ХП равно: " + str(player.getHP()) + "\n")
 
 
-    while player.hp > 0 and enm.hp > 0:
+    while player.getHP() > 0 and enm.getHP() > 0:
         if whoIsFirst == 1: #**player First
             __playerAttack()
             __enemyAttack()
@@ -88,10 +88,10 @@ def fight():
 
 
     #** who is win
-    if player.hp > 0:
-        ut.printMsg("Вы победили " + str(enm.name))
+    if player.getHP() > 0:
+        ut.printMsg("Вы победили " + str(enm.getName()))
     else:
-        ut.printMsg("Вы проиграли. Оставшееся ХП противника: " + str(enm.hp))
+        ut.printMsg("Вы проиграли. Оставшееся ХП противника: " + str(enm.getHP()))
         sys.exit(0)
 
 
@@ -107,12 +107,13 @@ ut.printMsg("Стураста как всегда не сидит на мест�
 ut.printMsg("Квест 1. ВОЗВРАЩЕНИЕ НА ПОВЕРХНОСТЬ")
 ut.printMsg("Тебя встречает Святой")
 ut.printMsg("SVYATOY - Слышь ты кто?")
-ut.printMsg("О, тебе позволили выбрать имя:")
-nameOfPlayer = str(input())
+ut.printMsg("")
+nameOfPlayer = str( input(" О, тебе позволили выбрать имя:") )
 
-player = Player(nameOfPlayer)
+player = Player()
+player.setName(nameOfPlayer)
 
-ut.printMsg("SVYATOY - Хорошо, " + player.name + ". Защищайся!!!!!!")
+ut.printMsg("SVYATOY - Хорошо, " + player.getName() + ". Защищайся!!!!!!")
 ut.printMsg("Это обучающий бой. И ты точно проиграешь")
 
 #характеристики врага можно посмотреть в player.py.setEnemy()
