@@ -16,10 +16,11 @@ class Character(ABC):
         self.__hp = 100
         self.__attackDamage = 1
         self.__inventory = {}
-        self.__isWeaponInUse = False
+        self.isWeaponInUse = False
         self.__weapon = Weapon("SomeName")
         self.__amountOfDoshirak = 0
         self.__doshirakEffect = 50
+        self.__criticalChance = 0
 
         self.__defence = 5
 
@@ -90,3 +91,9 @@ class Character(ABC):
         return self.__defence
     def setDefence(self, howMuchToChange):
         self.__defence += howMuchToChange
+
+#**CriticalChance get set
+    def setCritChance(self, howMuchToChange):
+        self.__criticalChance += howMuchToChange
+    def getCriticalChance(self):
+        return self.__criticalChance

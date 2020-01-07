@@ -7,7 +7,7 @@ class Weapon:
     def __init__(self, name):
         self.name = name
         self.__attackDamage = 0
-        self.__critChance = 0
+        self.__criticalChance = 0
 
 #! заморожено на неопределенный срок
         self.__durability = 100
@@ -15,14 +15,14 @@ class Weapon:
 
     def upgrade(self, plusAttack, plusCritChance):
         self.__attackDamage += plusAttack
-        self.__critChance += plusCritChance
+        self.__criticalChance += plusCritChance
 
     def getAttackDamage(self):
         return self.__attackDamage
     def setAttackDamage(self, attackDamage):
         self.__attackDamage = attackDamage
 
-    def getCritChance(self):
-        return self.__critChance
-    def setCritChance(self, critChance):
-        self.__critChance = critChance
+    def getCriticalChance(self):
+        return self.__criticalChance
+    def setCritChance(self, criticalChance):
+        self.__criticalChance = criticalChance
