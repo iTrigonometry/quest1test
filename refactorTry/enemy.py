@@ -42,4 +42,13 @@ class Enemy(Character):
         __name = self.getName()
 
         if __name == "SVYATOY":
-            self.setHP(199)
+            self.setHP(100)
+            self.setAttackDamage(1)
+            self.setDefence(0)
+            self.setCriticalChance(10)
+
+        if __name == "STYROSTA":
+            self.setHP(999)
+            self.setAttackDamage(999)
+            self.setDefence(100)
+            self.setCriticalChance(100)
