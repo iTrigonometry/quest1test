@@ -1,4 +1,4 @@
-from weapon import Weapon
+from items.weapon import Weapon
 from abc import ABC, abstractmethod
 
 #TODO в getweaponname добавить проверку на установленное оружие
@@ -23,6 +23,8 @@ class Character(ABC):
         self.__criticalChance = 0
 
         self.__defence = 5
+
+        self.weapon = Weapon("NoName")
 
 
 
@@ -93,7 +95,7 @@ class Character(ABC):
         self.__defence += howMuchToChange
 
 #**CriticalChance get set
-    def setCritChance(self, howMuchToChange):
+    def setCriticalChance(self, howMuchToChange):
         self.__criticalChance += howMuchToChange
     def getCriticalChance(self):
         return self.__criticalChance

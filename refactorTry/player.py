@@ -1,6 +1,6 @@
 from refactorTry.character import Character
 from random import randint
-import utills.utils as ut
+import utils.utils as ut
 
 class Player(Character):
 
@@ -20,11 +20,6 @@ class Player(Character):
 
         elif nameOfHit == "weapon":
             if self.isWeaponInUse:
-                if randomNum > self.weapon.getCriticalChance():
-                    return self.weapon.getAttackDamage()
-                else:
-                    return self.weapon.getAttackDamage() * 2
-            else:
-                ut.printMsg("Соси жопу ты даже не поинтересовался есть у тебя оружие или нет")
+                return self.weapon.getDamageOfHit()
         else:
             return 0

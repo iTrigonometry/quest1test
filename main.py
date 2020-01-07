@@ -1,4 +1,4 @@
-import utils as ut
+import utils.utils as ut
 from refactorTry.player import Player
 from refactorTry.enemy import Enemy
 import sys
@@ -6,7 +6,6 @@ import random
 #! важные переменые
 #! для врага ВСЕГДА ИСПОЛЬЗОВАТЬ enm
 #! Игрок прячется в player
-
 
 """
     Готовые TODO
