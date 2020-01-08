@@ -77,6 +77,8 @@ class Character(ABC):
         self.__weapon.setCritChance(critChanceOfWeapon)
     def removeWeapon(self):
         self.__isWeaponInUse = False
+    def getWeaponHitDamage(self):
+        return self.__weapon.getDamageOfHit()
 
 
 #**Doshiraks get set

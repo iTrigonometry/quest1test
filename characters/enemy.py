@@ -1,4 +1,4 @@
-from refactorTry.character import Character
+from characters.character import Character
 from random import randint
 
 #TODO добавить возможность экипировки оружия
@@ -27,7 +27,7 @@ class Enemy(Character):
             randomNum = randint(0,100)
             if randomNum >= self.getCriticalChance(): return self.getAttackDamage()
             else: return self.getAttackDamage()*2
-        else: return self.weapon.getDamageOfHit()
+        else: return self.getWeaponHitDamage()
 
 
 
@@ -38,7 +38,6 @@ class Enemy(Character):
         self.setHP( - self.getHP())
         self.setDefence( - self.getDefence())
         self.setCriticalChance( - self.getCriticalChance())
-
         __name = self.getName()
 
         if __name == "SVYATOY":
