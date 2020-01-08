@@ -1,6 +1,6 @@
 import utils.utils as ut
-from refactorTry.player import Player
-from refactorTry.enemy import Enemy
+from characters.player import Player
+from characters.enemy import Enemy
 import sys
 import random
 #! важные переменые

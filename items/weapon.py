@@ -1,12 +1,12 @@
 from random import randint
 #TODO добавить патроны
 #TODO добавить durability прочность
-#TODO разработать логику duraility 
+#TODO разработать логику duraility
 
 class Weapon:
 
     def __init__(self, name):
-        self.name = name
+        self.__name = name
         self.__attackDamage = 1
         self.__criticalChance = 0
 
@@ -27,6 +27,12 @@ class Weapon:
         return self.__criticalChance
     def setCritChance(self, criticalChance):
         self.__criticalChance = criticalChance
+
+    def getName(self):
+        return self.__name
+    def setName(self, newName):
+        self.__name = newName
+
 
     def getDamageOfHit(self):
         randomNum = randint(0,100)

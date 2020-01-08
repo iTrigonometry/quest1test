@@ -25,7 +25,7 @@ class Character(ABC):
 
         self.__defence = 5
         self.__weapon = Weapon("SomeName")
-        self.weapon = Weapon("NoName")
+
 
 
 
@@ -69,10 +69,10 @@ class Character(ABC):
 #** Weapon set get
 #! добавить проверку на текущее оружие
     def getWeaponName(self):
-        return self.__weapon.name
+        return self.__weapon.getName()
     def setWeapon(self, nameOfWeapon, attackDamageOfWeapon, critChanceOfWeapon):
         self.__isWeaponInUse = True
-        self.__weapon.name = nameOfWeapon
+        self.__weapon.setName(nameOfWeapon)
         self.__weapon.setAttackDamage(attackDamageOfWeapon)
         self.__weapon.setCritChance(critChanceOfWeapon)
     def removeWeapon(self):
