@@ -20,7 +20,7 @@ import random
 #TODO урон наносится как float а должен как int Либо оставляю либо нахер
 #TODO перенести все начало в отдельный метод main и запускать его через условие if __name__ == __main__
 
-
+#TODO переписать __playerAttack
 def quest1_Start():
     """Герой заходит в коморку и происходит диалог с STYROSTA
     """
@@ -52,7 +52,7 @@ def fight():
     def __playerAttack():
         numberOfHit = ut.printFightMsg()
 
-
+#! ПЕРЕПИСАТЬ НУ ЕБАНЫЙ В РОТ
         if numberOfHit == -1: enm.setHP(-0)
         else:
             if numberOfHit == 1:

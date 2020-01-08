@@ -8,6 +8,7 @@ from abc import ABC, abstractmethod
 #**     Второй вариант хилит от 1 до 50
 #**     Третий варииант от -25 до 50 или что-то вроде того
 
+#TODO переписать WEAPONS GET SET
 
 class Character(ABC):
 
@@ -17,13 +18,13 @@ class Character(ABC):
         self.__attackDamage = 1
         self.__inventory = {}
         self.isWeaponInUse = False
-        self.__weapon = Weapon("SomeName")
+
         self.__amountOfDoshirak = 0
         self.__doshirakEffect = 50
         self.__criticalChance = 0
 
         self.__defence = 5
-
+        self.__weapon = Weapon("SomeName")
         self.weapon = Weapon("NoName")
 
 
