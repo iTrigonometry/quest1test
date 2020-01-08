@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 class Character(ABC):
 
     def __init__(self):
-        self.__name = ""
+        self.__name = "Default Name"
         self.__hp = 100
         self.__attackDamage = 1
         self.__inventory = {}
