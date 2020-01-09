@@ -84,7 +84,7 @@ class Character(ABC):
 #**Doshiraks get set
 
     def getAmountOfDoshirak(self):
-        return self.__amountOfDoshirak()
+        return self.__amountOfDoshirak
 
     def setAmountOfDoshirak(self, howMuchToChange):
         self.__amountOfDoshirak += howMuchToChange
