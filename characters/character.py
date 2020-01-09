@@ -1,14 +1,25 @@
 from items.weapon import Weapon
 from abc import ABC, abstractmethod
 
-#TODO в getweaponname добавить проверку на установленное оружие
+"""готовые TODO
+    #TODO в getweaponname добавить проверку на установленное оружие
+        помимо getWeaponName эту проверку добавил в GetWeaponHitDamage
+        при запросе имени если оружия нет то возвращается у вас нет оружия
+        а при попытке получить урон оружия при его несуществовании вы получите 0
+
+    #TODO переписать WEAPONS GET SET
+        не помню че там надо было переписать если честно KEKW
+"""
+
+
+
 
 #TODO подумать над использованем доширака
 #**     Первый вариант хилит на определенное количество хп
 #**     Второй вариант хилит от 1 до 50
 #**     Третий варииант от -25 до 50 или что-то вроде того
 
-#TODO переписать WEAPONS GET SET
+
 
 class Character(ABC):
 
@@ -71,8 +82,8 @@ class Character(ABC):
     def getWeaponName(self):
         if self.__isWeaponInUse:
            return self.__weapon.getName()
-
-
+        else:
+            return "У вас нет оружия"
     def setWeapon(self, nameOfWeapon, attackDamageOfWeapon, critChanceOfWeapon):
         self.__isWeaponInUse = True
         self.__weapon.setName(nameOfWeapon)
@@ -80,6 +91,7 @@ class Character(ABC):
         self.__weapon.setCriticalChance(critChanceOfWeapon)
     def removeWeapon(self):
         self.__isWeaponInUse = False
+        self.setWeapon("SomeName", 0, 0)
     def getWeaponHitDamage(self):
         if self.__isWeaponInUse:
             return self.__weapon.getDamageOfHit()
