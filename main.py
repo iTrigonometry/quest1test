@@ -14,11 +14,15 @@ import random
     #TODO поработать над диалогами. Читаются не очень
             Тотальная переработка сюжета
     #TODO сделать рандомный выбор первого атакующего в начале боя
-            #!Вероятно нужны перетесты
+            #!Вероятно нужны перетесты ОТПРАВЛЕНО
+    #TODO урон наносится как float а должен как int Либо оставляю либо нахер
+            Пока что нахер так как нужно просто посмотреть как это будет играться
+    #TODO перенести все начало в отдельный метод main и запускать его через условие if __name__ == __main__
+            Просто все занес в условие, даже не стал придумывать метод
 """
 
-#TODO урон наносится как float а должен как int Либо оставляю либо нахер
-#TODO перенести все начало в отдельный метод main и запускать его через условие if __name__ == __main__
+
+
 
 #TODO переписать __playerAttack
 def quest1_Start():
@@ -52,22 +56,19 @@ def fight():
     def __playerAttack():
         numberOfHit = ut.printFightMsg()
 
-#! ПЕРЕПИСАТЬ НУ ЕБАНЫЙ В РОТ
         if numberOfHit == -1: enm.setHP(-0)
+        elif numberOfHit == 1:
+            __playerHandHit =  player.hit("hand")
+            enm.setHP( - __playerHandHit - (__playerHandHit * enm.getDefence() / 100) )
+        elif numberOfHit == 2:
+            __playerLegHit =  player.hit("leg")
+            enm.setHP( -  __playerLegHit - (__playerLegHit * enm.getDefence() / 100) )
+        elif numberOfHit == 3:
+            __playerWeaponHit = player.hit("weapon")
+            enm.setHP( - __playerWeaponHit - (__playerWeaponHit * enm.getDefence() / 100) )
         else:
-            if numberOfHit == 1:
-                __playerHandHit =  player.hit("hand")
-                enm.setHP( - __playerHandHit - (__playerHandHit * enm.getDefence() / 100) )
-            else:
-                if numberOfHit == 2:
-                    __playerLegHit =  player.hit("leg")
-                    enm.setHP( -  __playerLegHit - (__playerLegHit * enm.getDefence() / 100) )
-                else:
-                    if numberOfHit == 3:
-                        __playerWeaponHit = player.hit("weapon")
-                        enm.setHP( - __playerWeaponHit - (__playerWeaponHit * enm.getDefence() / 100) )
-                    else:
-                        player.useDoshirak()
+            player.useDoshirak()
+
         ut.printMsg("ХП противника равно: " + str(enm.getHP()))
 
     def __enemyAttack():
