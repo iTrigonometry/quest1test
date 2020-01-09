@@ -69,16 +69,22 @@ class Character(ABC):
 #** Weapon set get
 #! добавить проверку на текущее оружие
     def getWeaponName(self):
-        return self.__weapon.getName()
+        if self.__isWeaponInUse:
+           return self.__weapon.getName()
+
+
     def setWeapon(self, nameOfWeapon, attackDamageOfWeapon, critChanceOfWeapon):
         self.__isWeaponInUse = True
         self.__weapon.setName(nameOfWeapon)
         self.__weapon.setAttackDamage(attackDamageOfWeapon)
-        self.__weapon.setCritChance(critChanceOfWeapon)
+        self.__weapon.setCriticalChance(critChanceOfWeapon)
     def removeWeapon(self):
         self.__isWeaponInUse = False
     def getWeaponHitDamage(self):
-        return self.__weapon.getDamageOfHit()
+        if self.__isWeaponInUse:
+            return self.__weapon.getDamageOfHit()
+        else:
+            return 0
 
 
 #**Doshiraks get set
