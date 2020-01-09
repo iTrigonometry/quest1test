@@ -14,9 +14,9 @@ class Weapon:
         self.__durability = 100
         self.__patron = 0
 
-    def upgrade(self, plusAttack, plusCriticalChance):
-        self.__attackDamage += plusAttack
-        self.__criticalChance += plusCriticalChance
+    def upgrade(self, Attack, CriticalChance):
+        self.__attackDamage += Attack
+        self.__criticalChance += CriticalChance
 
     def getAttackDamage(self):
         return self.__attackDamage
@@ -25,7 +25,7 @@ class Weapon:
 
     def getCriticalChance(self):
         return self.__criticalChance
-    def setCritChance(self, criticalChance):
+    def setCriticalChance(self, criticalChance):
         self.__criticalChance = criticalChance
 
     def getName(self):
