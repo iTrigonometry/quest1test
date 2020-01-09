@@ -1,6 +1,6 @@
 import sys
-print(sys.path)
-sys.path.append("c:\\Users\\TwentyFiveTons\\Documents\\projects\\quest1test")
+#добавляем в sys.path путь до проекта чтобы можно было импортить наши классные классы
+sys.path.append(sys.path[0][:-6])
 #print(sys.path)
 from characters.player import Player
 from characters.enemy import Enemy
