@@ -2,6 +2,8 @@ from characters.character import Character
 from random import randint
 import utils.utils as ut
 
+
+
 class Player(Character):
 
     def hit(self, nameOfHit: str):
@@ -20,6 +22,6 @@ class Player(Character):
 
         elif nameOfHit == "weapon":
             if self.isWeaponInUse:
-                return self.weapon.getDamageOfHit()
+                return self.getWeaponHitDamage()
         else:
             return 0
