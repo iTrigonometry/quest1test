@@ -3,12 +3,11 @@ from random import randint
 import utils.utils as ut
 
 
-
 class Player(Character):
 
     def hit(self, nameOfHit: str):
         baseCriticalChance = self.getCriticalChance()
-        randomNum = randint(0,100)
+        randomNum = randint(0, 100)
         if nameOfHit == "leg":
             if randomNum > baseCriticalChance + 10:
                 return self.getAttackDamage() - (self.getAttackDamage()/2)

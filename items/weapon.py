@@ -1,7 +1,8 @@
 from random import randint
-#TODO добавить патроны
-#TODO добавить durability прочность
-#TODO разработать логику duraility
+# TODO добавить патроны
+# TODO добавить durability прочность
+# TODO разработать логику duraility
+
 
 class Weapon:
 
@@ -10,7 +11,7 @@ class Weapon:
         self.__attackDamage = 1
         self.__criticalChance = 0
 
-#! заморожено на неопределенный срок
+# ! заморожено на неопределенный срок
         self.__durability = 100
         self.__patron = 0
 
@@ -20,22 +21,25 @@ class Weapon:
 
     def getAttackDamage(self):
         return self.__attackDamage
+
     def setAttackDamage(self, attackDamage):
         self.__attackDamage = attackDamage
 
     def getCriticalChance(self):
         return self.__criticalChance
+
     def setCriticalChance(self, criticalChance):
         self.__criticalChance = criticalChance
 
     def getName(self):
         return self.__name
+
     def setName(self, newName):
         self.__name = newName
 
-
     def getDamageOfHit(self):
-        randomNum = randint(0,100)
+        randomNum = randint(0, 100)
         if randomNum >= self.__criticalChance:
             return self.__attackDamage
-        else: return self.__attackDamage * 2
+        else:
+            return self.__attackDamage * 2
