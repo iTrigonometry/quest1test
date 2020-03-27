@@ -27,13 +27,14 @@ import random
 """
 
 
-def quest1_Start():
+def quest1_start():
     """Герой заходит в коморку и происходит диалог с STYROSTA
     """
-    ut.printMsg("STYROSTA - Привет, " + str(player.getName()) + "." +
+    ut.print_msg(
+                "STYROSTA - Привет, " + str(player.get_name()) + "." +
                 "Ты уже видился с ILYLBAN? Хотя не важно." +
                 "У него точно все хорошо.")
-    ut.printMsg("STYROSTA - У нас есть проблема")
+    ut.print_msg("STYROSTA - У нас есть проблема")
 
 
 def fight():
@@ -49,46 +50,46 @@ def fight():
     enm: Enemy - враг
     player: Player - игрок
     """
-    ut.printMsg("Бой начался")
-    ut.printMsg(
-        "Ваше хп равно: " + str(player.getHP())
-        + "\nХП противника равно: " + str(enm.getHP()))
+    ut.print_msg("Бой начался")
+    ut.print_msg(
+        "Ваше хп равно: " + str(player.get_HP())
+        + "\nХП противника равно: " + str(enm.get_HP()))
 
-    whoIsFirst = random.randint(1, 2)  # ** 1- player 2- enemy
+    who_is_first = random.randint(1, 2)  # ** 1- player 2- enemy
 
     def __playerAttack():
-        numberOfHit = ut.printFightMsg()
+        number_of_hit = ut.print_fight_msg()
 
-        if numberOfHit == -1:
-            enm.setHP(-0)
-        elif numberOfHit == 1:
-            __playerHandHit = player.hit("hand")
-            enm.setHP(
-                - __playerHandHit -
-                (__playerHandHit * enm.getDefence() / 100))
-        elif numberOfHit == 2:
-            __playerLegHit = player.hit("leg")
-            enm.setHP(
-                - __playerLegHit -
-                (__playerLegHit * enm.getDefence() / 100))
-        elif numberOfHit == 3:
-            __playerWeaponHit = player.hit("weapon")
-            enm.setHP(
-                - __playerWeaponHit -
-                (__playerWeaponHit * enm.getDefence() / 100))
+        if number_of_hit == -1:
+            enm.set_HP(-0)
+        elif number_of_hit == 1:
+            __player_hand_hit = player.hit("hand")
+            enm.set_HP(
+                - __player_hand_hit -
+                (__player_hand_hit * enm.get_defence() / 100))
+        elif number_of_hit == 2:
+            __player_leg_hit = player.hit("leg")
+            enm.set_HP(
+                - __player_leg_hit -
+                (__player_leg_hit * enm.get_defence() / 100))
+        elif number_of_hit == 3:
+            __player_weapon_hit = player.hit("weapon")
+            enm.set_HP(
+                    -__player_weapon_hit -
+                    (__player_weapon_hit * enm.get_defence() / 100))
         else:
-            player.useDoshirak()
+            player.use_doshirak()
 
-        ut.printMsg("ХП противника равно: " + str(enm.getHP()))
+        ut.print_msg("ХП противника равно: " + str(enm.get_HP()))
 
     def __enemyAttack():
-        ut.printMsg("Атакует противник")
+        ut.print_msg("Атакует противник")
         __enemyHit = enm.hit()
-        player.setHP(- __enemyHit - (__enemyHit * player.getDefence() / 100))
-        ut.printMsg("Ваше ХП равно: " + str(player.getHP()) + "\n")
+        player.set_HP(- __enemyHit - (__enemyHit * player.get_defence() / 100))
+        ut.print_msg("Ваше ХП равно: " + str(player.get_HP()) + "\n")
 
-    while player.getHP() > 0 and enm.getHP() > 0:
-        if whoIsFirst == 1:  # **player First
+    while player.get_HP() > 0 and enm.get_HP() > 0:
+        if who_is_first == 1:  # **player First
             __playerAttack()
             __enemyAttack()
         else:  # **enemy First
@@ -96,12 +97,12 @@ def fight():
             __playerAttack()
 
     # ** who is win
-    if player.getHP() > 0:
-        ut.printMsg("Вы победили " + str(enm.getName()))
+    if player.get_HP() > 0:
+        ut.print_msg("Вы победили " + str(enm.get_name()))
     else:
-        ut.printMsg(
+        ut.print_msg(
             "Вы проиграли. Оставшееся ХП противника: "
-            + str(enm.getHP()))
+            + str(enm.get_HP()))
         sys.exit(0)
 
 
@@ -109,43 +110,45 @@ player = Player()
 enm = Enemy()
 if __name__ == "__main__":
     # СТАРТ КВЕСТА
-    ut.printMsg("НАЧАЛО")
-    ut.printMsg("И нахера ты это запустил дебил")
-    ut.printMsg(
+    ut.print_msg("НАЧАЛО")
+    ut.print_msg("И нахера ты это запустил дебил")
+    ut.print_msg(
                 "Давай так. Тебе уже 22 года. На дворе 2037 год." +
                 "Ничего особенного не произошло\nКроме взрыва шараги "
                 "и разъеба всего Питера.")
-    ut.printMsg(
+    ut.print_msg(
                 "Стураста как всегда не сидит на месте и ищет" +
                 "приключений на свою жопу. Ему нужны сталкеры...")
     # КВЕСТ 1
-    ut.printMsg("Квест 1. ВОЗВРАЩЕНИЕ НА ПОВЕРХНОСТЬ")
-    ut.printMsg("Тебя встречает Святой")
-    ut.printMsg("SVYATOY - Слышь ты кто?")
-    ut.printMsg("")
-    nameOfPlayer = str(input(" О, тебе позволили выбрать имя:"))
+    ut.print_msg("Квест 1. ВОЗВРАЩЕНИЕ НА ПОВЕРХНОСТЬ")
+    ut.print_msg("Тебя встречает Святой")
+    ut.print_msg("SVYATOY - Слышь ты кто?")
+    ut.print_msg("")
+    name_of_player = str(input(" О, тебе позволили выбрать имя:"))
 
-    player.setName(nameOfPlayer)
+    player.set_name(name_of_player)
 
-    ut.printMsg("SVYATOY - Хорошо, " + player.getName() + ". Защищайся!!!!!!")
-    ut.printMsg("Это обучающий бой. И ты точно проиграешь")
+    ut.print_msg(
+            "SVYATOY - Хорошо, " + player.get_name() + ". Защищайся!!!!!!")
+    ut.print_msg("Это обучающий бой. И ты точно проиграешь")
 
-    # характеристики врага можно посмотреть в enemy.py.setEnemy()
-    enm.setEnemy("SVYATOY")
+    # характеристики врага можно посмотреть в enemy.py.set_enemy()
+    enm.set_enemy("SVYATOY")
 
     fight()
 
-    ut.printMsg("SVYATOY - А ты что-то можешь.")
-    answer = ut.printQuestionMsg2Option(
+    ut.print_msg("SVYATOY - А ты что-то можешь.")
+    answer = ut.print_question_msg_2option(
                     "Тут STYRASTA ищет волантеров." +
                     "Не хочешь поучавствовать?", "Да", "Нет")
     if answer == 1:
-        ut.printMsg("SVYATOY - Он у себя в коморке")
-        ut.printMsg("Вы проходите в коморку.")
+        ut.print_msg("SVYATOY - Он у себя в коморке")
+        ut.print_msg("Вы проходите в коморку.")
     else:
-        ut.printMsg("SVYATOY - ЛИЧНО МНЕ ПОЕБАТЬ. Пацаны затаскивайте")
-        ut.printMsg("Вас насильно затаскивают в коморку где сидит STYRASTA")
-    ut.printMsg("Там пахнет так себе если честно.\n" +
+        ut.print_msg("SVYATOY - ЛИЧНО МНЕ ПОЕБАТЬ. Пацаны затаскивайте")
+        ut.print_msg("Вас насильно затаскивают в коморку где сидит STYRASTA")
+    ut.print_msg(
+                "Там пахнет так себе если честно.\n" +
                 "Не тесно, но и не сказать что есть куда яблоку упасть.\n" +
                 "КАЗАХСТАН. Первое что приходит вам в голову")
 

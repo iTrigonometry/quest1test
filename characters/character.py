@@ -2,8 +2,8 @@ from items.weapon import Weapon
 from abc import ABC, abstractmethod
 
 """готовые TODO
-    # TODO в getweaponname добавить проверку на установленное оружие
-        помимо getWeaponName эту проверку добавил в GetWeaponHitDamage
+    # TODO в get_weapon_name добавить проверку на установленное оружие
+        помимо get_weapon_name эту проверку добавил в Get_weapon_hit_damage
         при запросе имени если оружия нет то возвращается у вас нет оружия
         а при попытке получить урон оружия
             при его несуществовании вы получите 0
@@ -23,13 +23,13 @@ class Character(ABC):
     def __init__(self):
         self.__name = "Default Name"
         self.__hp = 100
-        self.__attackDamage = 1
-        self.__inventory = {}
-        self.isWeaponInUse = False
+        self.__attack_damage = 1
+        self.___inventory = {}
+        self.is_weapon_in_use = False
 
-        self.__amountOfDoshirak = 0
-        self.__doshirakEffect = 50
-        self.__criticalChance = 0
+        self.__amount_of_doshirak = 0
+        self.__doshirak_effect = 50
+        self.__critical_chance = 0
 
         self.__defence = 5
         self.__weapon = Weapon("SomeName")
@@ -38,80 +38,77 @@ class Character(ABC):
     def hit(self):
         pass
 
-    def useDoshirak(self):
+    def use_doshirak(self):
         pass
 
 # !GETERS SETTERS GOVNA
 # **Name set get
-    def getName(self):
+    def get_name(self):
         return self.__name
 
-    def setName(self, name: str):
+    def set_name(self, name: str):
         self.__name = name
 
 # ** HP set get
-    def getHP(self):
+    def get_HP(self):
         return self.__hp
 
-    def setHP(self, howMuchToChange: int):
-        self.__hp += howMuchToChange
+    def set_HP(self, how_much_to_change: int):
+        self.__hp += how_much_to_change
 
 # **attackDamage set get
-    def getAttackDamage(self):
-        return self.__attackDamage
+    def get_attack_damage(self):
+        return self.__attack_damage
 
-    def setAttackDamage(self, howMuchToChange: int):
-        self.__attackDamage += howMuchToChange
+    def set_attack_damage(self, how_much_to_change: int):
+        self.__attack_damage += how_much_to_change
 
-# **Inventory
-    def getInventory(self):
+# **_inventory
+    def get_inventory(self):
         pass
 
-    def setInventory(self):
+    def set_inventory(self):
         pass
 
 # ** Weapon set get
 # ! добавить проверку на текущее оружие
-    def getWeaponName(self):
-        if self.__isWeaponInUse:
-            return self.__weapon.getName()
+    def get_weapon_name(self):
+        if self.__is_weapon_in_use:
+            return self.__weapon.get_name()
         else:
             return "У вас нет оружия"
 
-    def setWeapon(
-            self, nameOfWeapon, attackDamageOfWeapon, critChanceOfWeapon):
-        self.__isWeaponInUse = True
-        self.__weapon.setName(nameOfWeapon)
-        self.__weapon.setAttackDamage(attackDamageOfWeapon)
-        self.__weapon.setCriticalChance(critChanceOfWeapon)
+    def set_weapon(
+            self, name, attack_damage, crit_chance):
+        self.__is_weapon_in_use = True
+        self.__weapon.set_name(name)
+        self.__weapon.set_attack_damage(attack_damage)
+        self.__weapon.set_critical_chance(crit_chance)
 
-    def removeWeapon(self):
-        self.__isWeaponInUse = False
-        self.setWeapon("SomeName", 0, 0)
+    def remove_weapon(self):
+        self.__is_weapon_in_use = False
+        self.set_weapon("SomeName", 0, 0)
 
-    def getWeaponHitDamage(self):
-        if self.__isWeaponInUse:
-            return self.__weapon.getDamageOfHit()
-        else:
-            return 0
+    def get_weapon_hit_damage(self):
+        return self.__weapon.get_damage_of_hit()
 
     # **Doshiraks get set
-    def getAmountOfDoshirak(self):
-        return self.__amountOfDoshirak
+    def get_amount_of_doshirak(self):
+        return self.__amount_of_doshirak
 
-    def setAmountOfDoshirak(self, howMuchToChange):
-        self.__amountOfDoshirak += howMuchToChange
+    def set_amount_of_doshirak(self, how_much_to_change):
+        self.__amount_of_doshirak += how_much_to_change
 
 # **Defence get set
-    def getDefence(self):
+    def get_defence(self):
         return self.__defence
 
-    def setDefence(self, howMuchToChange):
-        self.__defence += howMuchToChange
+    def set_defence(self, how_much_to_change):
+        self.__defence += how_much_to_change
 
 # **CriticalChance get set
-    def setCriticalChance(self, howMuchToChange):
-        self.__criticalChance += howMuchToChange
+    def set_critical_chance(self, how_much_to_change):
+        self.__critical_chance += how_much_to_change
 
-    def getCriticalChance(self):
-        return self.__criticalChance
+    def get_critical_chance(self):
+        return self.__critical_chance

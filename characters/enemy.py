@@ -29,35 +29,38 @@ STYRASTA - Староста - Толян - Парикмахер - Алкогол
 
 
 class Enemy(Character):
-    def hit(self):
-        numberOfHit = randint(1, 3)
-        if numberOfHit == 1:
-            return self.getAttackDamage()
-        elif numberOfHit == 2:
-            randomNum = randint(0, 100)
-            if randomNum >= self.getCriticalChance():
-                return self.getAttackDamage()
-            else:
-                return self.getAttackDamage() * 2
-        else:
-            return self.getWeaponHitDamage()
+    def __init__(self):
+        super().__init__()
 
-    def setEnemy(self, enemyName):
-        self.setName(enemyName)
-        self.setAttackDamage(- self.getAttackDamage())
-        self.setHP(- self.getHP())
-        self.setDefence(- self.getDefence())
-        self.setCriticalChance(- self.getCriticalChance())
-        __name = self.getName()
+    def hit(self):
+        number_of_hit = randint(1, 3)
+        if number_of_hit == 1:
+            return self.get_attack_damage()
+        elif number_of_hit == 2:
+            random_num = randint(0, 100)
+            if random_num >= self.get_critical_chance():
+                return self.get_attack_damage()
+            else:
+                return self.get_attack_damage() * 2
+        else:
+            return self.get_weapon_hit_damage()
+
+    def set_enemy(self, enemy_name):
+        self.set_name(enemy_name)
+        self.set_attack_damage(- self.get_attack_damage())
+        self.set_HP(- self.get_HP())
+        self.set_defence(- self.get_defence())
+        self.set_critical_chance(- self.get_critical_chance())
+        __name = self.get_name()
 
         if __name == "SVYATOY":
-            self.setHP(100)
-            self.setAttackDamage(1)
-            self.setDefence(0)
-            self.setCriticalChance(10)
+            self.set_HP(100)
+            self.set_attack_damage(1)
+            self.set_defence(0)
+            self.set_critical_chance(10)
 
         if __name == "STYROSTA":
-            self.setHP(999)
-            self.setAttackDamage(999)
-            self.setDefence(100)
-            self.setCriticalChance(100)
+            self.set_HP(999)
+            self.set_attack_damage(999)
+            self.set_defence(100)
+            self.set_critical_chance(100)

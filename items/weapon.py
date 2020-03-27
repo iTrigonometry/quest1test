@@ -8,38 +8,38 @@ class Weapon:
 
     def __init__(self, name):
         self.__name = name
-        self.__attackDamage = 1
-        self.__criticalChance = 0
+        self.__attack_damage = 1
+        self.__critical_chance = 0
 
 # ! заморожено на неопределенный срок
         self.__durability = 100
         self.__patron = 0
 
-    def upgrade(self, Attack, CriticalChance):
-        self.__attackDamage += Attack
-        self.__criticalChance += CriticalChance
+    def upgrade(self, attack, critical_chance):
+        self.__attack_damage += attack
+        self.__critical_chance += critical_chance
 
-    def getAttackDamage(self):
-        return self.__attackDamage
+    def get_attack_damage(self):
+        return self.__attack_damage
 
-    def setAttackDamage(self, attackDamage):
-        self.__attackDamage = attackDamage
+    def set_attack_damage(self, attack_damage):
+        self.__attack_damage = attack_damage
 
-    def getCriticalChance(self):
-        return self.__criticalChance
+    def get_critical_chance(self):
+        return self.__critical_chance
 
-    def setCriticalChance(self, criticalChance):
-        self.__criticalChance = criticalChance
+    def set_critical_chance(self, critical_chance):
+        self.__critical_chance = critical_chance
 
-    def getName(self):
+    def get_name(self):
         return self.__name
 
-    def setName(self, newName):
-        self.__name = newName
+    def set_name(self, name):
+        self.__name = name
 
-    def getDamageOfHit(self):
-        randomNum = randint(0, 100)
-        if randomNum >= self.__criticalChance:
-            return self.__attackDamage
+    def get_damage_of_hit(self):
+        random_num = randint(0, 100)
+        if random_num >= self.__critical_chance:
+            return self.__attack_damage
         else:
-            return self.__attackDamage * 2
+            return self.__attack_damage * 2

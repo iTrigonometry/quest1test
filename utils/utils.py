@@ -1,18 +1,18 @@
 from time import sleep
 
 
-def printMsg(message):
+def print_msg(message):
     """вывод сообщения. Если вдруг я решусь сделать
     все в окошках то мне не придется переписывать все
 
     Arguments:
         message {string} -- text of message
     """
-    __delayBeforeNextMessage()
+    __delay_before_next_message()
     print(message)
 
 
-def printFightMsg():
+def print_fight_msg():
     """Метод для выбора действия
 
     Returns:
@@ -31,7 +31,7 @@ def printFightMsg():
         try:
             x = int(input())
             if x < 1 or x > 4:
-                printMsg("Попробуй еще раз")
+                print_msg("Попробуй еще раз")
             else:
                 return x
         except ValueError:
@@ -39,8 +39,8 @@ def printFightMsg():
             return -1
 
 
-def printQuestionMsg2Option(message, optionOne, optionTwo):
-    print(message + "\n1." + optionOne + "\n2." + optionTwo)
+def print_question_msg_2option(message, option1, option2):
+    print(message + "\n1." + option1 + "\n2." + option2)
     x = 0
     while x < 1 or x > 2:
         try:
@@ -55,8 +55,8 @@ def printQuestionMsg2Option(message, optionOne, optionTwo):
             continue
 
 
-def __delayBeforeNextMessage():
+def __delay_before_next_message():
     """Просто задержка между сообщениями,
         чтобы хоть как то успевать следить за тем что происходит
     """
-    sleep(1)
+    sleep(0)
