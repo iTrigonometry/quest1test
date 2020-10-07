@@ -1,2 +1,6 @@
 __pycache__
 .vscode
+characters/__pycache__
+items/__pycache__
+tests/__pycache__
+utils/__pycache__
