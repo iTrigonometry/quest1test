@@ -80,13 +80,59 @@ character
         
         GET SET BLOCK
         get_name(self)
-            возвращает имя персонажа
-        set_name(self)
-            устанавливает новое имя для персонажа
-enemy
-
+            возвращает имя персонажа self.__name
+        set_name(self, name: str)
+            устанавливает новое имя для персонажа self.__name
+            Аргументы
+                name - новое имя персонажа, значение переменной self.__name
+        get_hp(self)
+            возвращает очки здоровья персонажа, self.__hp
+        set_hp(self, how_much_to_change: int)
+            метод добавляет к текущим очкам здоровья 
+            персонажа указанное количество очков
+            Аргументы
+                how_much_to_change - число необходимое для добавления к текущим
+                    очкам персонажа
+        get_attack_damage(self)
+            метод возвращает урон который используется в расчетах
+            наносимого другому персонажу удара. self.__attack_damage
+        set_attack_damage(self, how_much_to_change: str)
+            метод добавляет к текущим очкам урона 
+            персонажа указанное количество очков
+        get_inventory(self)
+            возвращает инвентарь IN DEVELOPMENT
+        set_inventory(self)
+            IN DEVELOPMENT
+        get_weapon_name(self)
+            Возвращет строку имени оружия если оно есть и
+            "У вас нет оружия" если оно отсутствует
+            О наличии оружия говорит переменная  self.is_weapon_in_use
+        set_weapon(self, name, attack_damage, crit_chance)
+            устанавливает характеристики оружия и по логике вещей делает
+            его доступным для персонажа
+            Аргументы
+                name - имя оружия
+                attack_damage - урон оружия
+                crit_chance - шанс критического удара оружия
+        remove_weapon(self)
+            Убирает возможность использования оружия и обнуляет характеристики
+        get_weapon_hit_damage(self)
+            возвращает значение функции Weapon.get_damage_of_hit()
+        get_amount_of_doshirak(self)
+            возвращет количество имеющихся дошираков. self.__amount_of_doshirak
+        set_amount_of_doshirak(self, how_much_to_change)
+            добавляет к уже имеющимся доширам значение how_much_to_change
+        get_defence(self)
+            возвращает значение защиты персонажа. self.__defence
+        set_defence(self, how_much_to_change)
+            добавляет к текущему значению self.__defence значение how_much_to_change
+        get_critical_chance(self)
+            возвращает значение шанса критического удара. self.__critical_chance
+        set_critical_chance(self, how_much_to_change)
+            добавляет к текущему значению self.__critical_chance значение how_much_to_change
+        
 player
-
+    
 ITEMS
 weapon
 
