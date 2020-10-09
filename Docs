@@ -162,7 +162,42 @@ enemy
                  
 ITEMS
 weapon
-
+Класс Weapon
+    Методы
+        __init__(self, name)
+            определяет начальные характеристики оружия
+            Аргументы   
+                name - определит имя оружия.
+            Переменные
+                self.__name - имя оружия
+                self.__attack_damage - урон оружия. Стан. значение - 1
+                self.__critical_chance - шанс критического удара. Стан. значение - 0
+                self.__durability - прочность оружия. IN DEVELOPMENT
+                self.__patron - количество патронов. IN DEVELOPMENT
+        upgrade(self, attack, critical_chance)
+            добавляет к характеристикам оружия атаку и шанс критического удара
+            attack добавит число к self.__attack_damage. critical_chance добавит число к 
+            self.__critical_chance
+        GET SET BLOCK
+        get_attack_damage(self)
+            возвращет количество урона оружия. self.__attack_damage
+        set_attack_damage(self, attack_damage)
+            устанавливает оружию указаный урон (attack_damage)
+        get_critical_chance(self)
+            возвращает критический урон оружия. self.__critical_chance
+        set_critical_chance(self, critical_chance)
+            устанавливает оружия указаный шанс критического удара (critical_chance)
+        get_name(self)
+            возвращает имя оружия. self.__name
+        set_name(self, name)
+            устанавливает оружию указанное имя. (name)
+        get_damage_of_hit()
+            возвращает урон нанесенный оружием
+            Переменные 
+            random_num - число от 0 до 100. Используется для определения
+                нанесения критического удара. Если число меньше шанса критического
+                удара то наносится урон в два раза больше
+        
 TESTS
 main
 
