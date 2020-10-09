@@ -2,22 +2,11 @@ from time import sleep
 
 
 def print_msg(message):
-    """вывод сообщения. Если вдруг я решусь сделать
-    все в окошках то мне не придется переписывать все
-
-    Arguments:
-        message {string} -- text of message
-    """
     __delay_before_next_message()
     print(message)
 
 
 def print_fight_msg():
-    """Метод для выбора действия
-
-    Returns:
-        int -- action
-    """
     print(
             "На выбор у вас есть след позиции:" +
             "\n1)Удар рукой (наносит ваш обычный урон + шанс крита в 5%)" +
@@ -56,7 +45,4 @@ def print_question_msg_2option(message, option1, option2):
 
 
 def __delay_before_next_message():
-    """Просто задержка между сообщениями,
-        чтобы хоть как то успевать следить за тем что происходит
-    """
     sleep(0)

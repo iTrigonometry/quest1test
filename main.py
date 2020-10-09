@@ -3,28 +3,6 @@ from characters.player import Player
 from characters.enemy import Enemy
 import sys
 import random
-"""
-#! важные переменые
-#! для врага ВСЕГДА ИСПОЛЬЗОВАТЬ enm
-#! Игрок прячется в player
-"""
-"""
-    Готовые TODO
-    #TODO сделать показ текущего состояния хп мб дамага на экране
-        и добавить пробелы между блоками сражения
-
-    #TODO поработать над диалогами. Читаются не очень
-            Тотальная переработка сюжета
-    #TODO сделать рандомный выбор первого атакующего в начале боя
-            #!Вероятно нужны перетесты ОТПРАВЛЕНО
-    #TODO урон наносится как float а должен как int Либо оставляю либо нахер
-        Пока что нахер так как нужно просто посмотреть как это будет играться
-    #TODO перенести все начало в отдельный метод main
-        и запускать его через условие if __name__ == __main__
-        Просто все занес в условие, даже не стал придумывать метод
-    #TODO переписать __playerAttack
-            Переписал чес слово
-"""
 
 
 def quest1_start():
@@ -38,18 +16,6 @@ def quest1_start():
 
 
 def fight():
-    """
-    Метод для проведения боя
-    Сначала бьет игрок потом враг
-    #! Тесты
-    #! Возможность драки - +
-    #! Победа - +
-    #! Поражение - +
-    #! Неверный ввод - +
-    Для тестов необходимы следующие переменные
-    enm: Enemy - враг
-    player: Player - игрок
-    """
     ut.print_msg("Бой начался")
     ut.print_msg(
         "Ваше хп равно: " + str(player.get_HP())
@@ -57,7 +23,7 @@ def fight():
 
     who_is_first = random.randint(1, 2)  # ** 1- player 2- enemy
 
-    def __playerAttack():
+    def __player_attack():
         number_of_hit = ut.print_fight_msg()
 
         if number_of_hit == -1:
@@ -82,7 +48,7 @@ def fight():
 
         ut.print_msg("ХП противника равно: " + str(enm.get_HP()))
 
-    def __enemyAttack():
+    def __enemy_attack():
         ut.print_msg("Атакует противник")
         __enemyHit = enm.hit()
         player.set_HP(- __enemyHit - (__enemyHit * player.get_defence() / 100))
@@ -90,11 +56,11 @@ def fight():
 
     while player.get_HP() > 0 and enm.get_HP() > 0:
         if who_is_first == 1:  # **player First
-            __playerAttack()
-            __enemyAttack()
+            __player_attack()
+            __enemy_attack()
         else:  # **enemy First
-            __enemyAttack()
-            __playerAttack()
+            __enemy_attack()
+            __player_attack()
 
     # ** who is win
     if player.get_HP() > 0:

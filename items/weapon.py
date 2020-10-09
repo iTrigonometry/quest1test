@@ -1,7 +1,4 @@
 from random import randint
-# TODO добавить патроны
-# TODO добавить durability прочность
-# TODO разработать логику duraility
 
 
 class Weapon:
